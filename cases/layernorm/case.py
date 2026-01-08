@@ -39,7 +39,7 @@ class Result:
         tensors = torch.load(path)
         self.t_output = tensors["output"]
 
-    def get_tensor_list(self) -> list[torch.Tensor]:
+    def get_tensor_list(self) -> list:
         return [self.t_output]
 
 

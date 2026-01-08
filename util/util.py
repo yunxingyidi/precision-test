@@ -7,6 +7,7 @@ if importlib.util.find_spec("torch_npu") is not None:
     try:
         print("Importing torch_npu")
         import torch_npu
+        torch.npu.set_device(0)
         print(f"torch.npu.is_available(): {torch.npu.is_available()}")
     except:
         exit(1)
