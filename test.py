@@ -7,6 +7,8 @@ def test(op: str, dtype: str, device: str):
         from cases.softmax.case import Case, caller
     elif op == "layernorm":
         from cases.layernorm.case import Case, caller
+    elif op == "crossentropy":
+        from cases.crossentropy.case import Case, caller
     else:
         assert False
 

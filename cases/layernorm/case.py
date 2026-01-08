@@ -1,8 +1,4 @@
 import torch
-import sys
-import os
-
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../..')))
 from util.case_util import get_torch_dtype, get_torch_device
 
 
@@ -53,6 +49,7 @@ def caller(case: Case, dtype, device) -> Result:
     input_tensor = case.t_input.to(device=torch_device, dtype=torch_dtype)
     weight_tensor = case.t_weight.to(device=torch_device, dtype=torch_dtype)
     bias_tensor = case.t_bias.to(device=torch_device, dtype=torch_dtype)
-    output_tensor = torch.nn.functional.layer_norm(input_tensor, input_tensor.shape[-1:], weight_tensor, bias_tensor)
+    normalized_shape = (input_tensor.shape[-1],)  # Normalize over last dimension
+    output_tensor = torch.nn.functional.layer_norm(input_tensor, normalized_shape, weight_tensor, bias_tensor)
     result.t_output = output_tensor.to(device='cpu')
     return result

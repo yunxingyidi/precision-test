@@ -8,6 +8,8 @@ def compare(op: str, dtype: str, device: str):
         from cases.softmax.case import Result
     elif op == "layernorm":
         from cases.layernorm.case import Result
+    elif op == "crossentropy":
+        from cases.crossentropy.case import Result
     else:
         assert False
 
